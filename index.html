@@ -66,6 +66,44 @@
       color: var(--bg);
     }
 
+    .projects {
+      margin-top: 3rem;
+      text-align: left;
+    }
+
+    .projects h2 {
+      font-size: 1.3rem;
+      margin-bottom: 1rem;
+      text-align: center;
+      color: var(--muted);
+    }
+
+    .card {
+      background: var(--card-bg);
+      border-radius: 8px;
+      padding: 1.2rem;
+      margin-bottom: 1rem;
+    }
+
+    .card h3 {
+      font-size: 1.1rem;
+      margin-bottom: 0.4rem;
+    }
+
+    .card p {
+      font-size: 0.9rem;
+      color: var(--muted);
+      margin-bottom: 0.6rem;
+    }
+
+    .card a {
+      color: var(--accent);
+      text-decoration: none;
+      font-size: 0.85rem;
+    }
+
+    .card a:hover { text-decoration: underline; }
+
     @media (max-width: 480px) {
       h1 { font-size: 1.8rem; }
       .links { flex-direction: column; align-items: center; }
@@ -80,6 +118,25 @@
       <a href="https://github.com/jmanning336">GitHub</a>
       <a href="https://linkedin.com/">LinkedIn</a>
     </div>
+
+    <section class="projects">
+      <h2>Projects</h2>
+      <div class="card">
+        <h3>My First Site</h3>
+        <p>A personal landing page built with Claude Code and deployed on Railway.</p>
+        <a href="https://github.com/jmanning336/my-first-site">View project</a>
+      </div>
+      <div class="card">
+        <h3>Project Two</h3>
+        <p>Coming soon — placeholder for your next build.</p>
+        <a href="#">View project</a>
+      </div>
+      <div class="card">
+        <h3>Project Three</h3>
+        <p>Coming soon — placeholder for your next build.</p>
+        <a href="#">View project</a>
+      </div>
+    </section>
   </div>
 </body>
 </html>
