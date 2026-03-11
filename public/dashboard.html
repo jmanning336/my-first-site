@@ -203,6 +203,54 @@
       color: var(--muted);
     }
 
+    .info-toggle {
+      background: none;
+      border: 1px solid var(--border);
+      color: var(--muted);
+      padding: 0.4rem 0.8rem;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 0.8rem;
+      margin-bottom: 1rem;
+      transition: all 0.2s;
+    }
+
+    .info-toggle:hover { border-color: var(--accent); color: var(--accent); }
+
+    .info-panel {
+      display: none;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 1.2rem;
+      margin-bottom: 1.5rem;
+      font-size: 0.8rem;
+      line-height: 1.6;
+    }
+
+    .info-panel.open { display: block; }
+
+    .info-panel h3 {
+      font-size: 0.9rem;
+      margin-bottom: 0.5rem;
+      color: var(--accent);
+    }
+
+    .info-panel table {
+      width: 100%;
+      font-size: 0.8rem;
+      margin: 0.5rem 0;
+    }
+
+    .info-panel td, .info-panel th {
+      padding: 0.3rem 0.5rem;
+      border-bottom: 1px solid var(--border);
+      cursor: default;
+    }
+
+    .info-panel th { background: var(--surface-2); }
+    .info-panel th:hover { color: var(--text); }
+
     .refresh-info {
       text-align: center;
       color: var(--muted);
@@ -249,6 +297,37 @@
     </div>
   </div>
 
+  <button class="info-toggle" id="infoToggle">How Edge Score works</button>
+
+  <div class="info-panel" id="infoPanel">
+    <h3>Edge Score (0–100)</h3>
+    <p>Each opportunity is scored by how much potential edge it offers a sports bettor. Higher = more interesting.</p>
+    <table>
+      <thead>
+        <tr><th>Signal</th><th>Points</th><th>Why it matters</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Arbitrage detected</td><td>+80–100</td><td>Guaranteed profit by betting both sides at different books</td></tr>
+        <tr><td>Wide odds spread (40+ pts across books)</td><td>+25</td><td>One book is way off — possible value bet</td></tr>
+        <tr><td>Moderate odds spread (20-39 pts)</td><td>+15</td><td>Notable discrepancy worth checking</td></tr>
+        <tr><td>Major line movement (2+ pts)</td><td>+30</td><td>Sharp money likely moving the line</td></tr>
+        <tr><td>Heavy public action (70%+ one side)</td><td>+20</td><td>Potential fade opportunity — go against the crowd</td></tr>
+      </tbody>
+    </table>
+    <table>
+      <thead>
+        <tr><th>Score</th><th>Tier</th><th>What to do</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><span class="edge-score edge-arb">80+</span></td><td>Arbitrage</td><td>Act fast — these disappear in minutes</td></tr>
+        <tr><td><span class="edge-score edge-high">60–79</span></td><td>High Edge</td><td>Strong signal — worth investigating immediately</td></tr>
+        <tr><td><span class="edge-score edge-medium">35–59</span></td><td>Medium</td><td>Interesting — do your own research before betting</td></tr>
+        <tr><td><span class="edge-score edge-low">0–34</span></td><td>Low</td><td>Minor discrepancy — probably noise</td></tr>
+      </tbody>
+    </table>
+    <p style="color: var(--muted); margin-top: 0.5rem;">Data sourced from FanDuel, DraftKings, BetMGM, PointsBet, Caesars, and Wynn via The Odds API. Cached for 10 minutes.</p>
+  </div>
+
   <div id="loading"><span class="spinner"></span> Fetching odds from bookmakers...</div>
 
   <div id="tableContainer" style="display: none; overflow-x: auto;">
@@ -280,6 +359,14 @@
     let currentSport = 'all';
     let sortCol = 'edge';
     let sortAsc = false;
+
+    // Info panel toggle
+    document.getElementById('infoToggle').addEventListener('click', () => {
+      const panel = document.getElementById('infoPanel');
+      panel.classList.toggle('open');
+      document.getElementById('infoToggle').textContent =
+        panel.classList.contains('open') ? 'Hide scoring details' : 'How Edge Score works';
+    });
 
     // Sport filter buttons
     document.querySelectorAll('[data-sport]').forEach(btn => {
