@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Jeff Manning</title>
+  <style>
+    :root {
+      --bg: #0f0f0f;
+      --text: #e8e8e8;
+      --accent: #6cb4ee;
+      --muted: #888;
+      --card-bg: #1a1a1a;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 2rem;
+    }
+
+    .container {
+      max-width: 600px;
+      width: 100%;
+      text-align: center;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+    }
+
+    .bio {
+      font-size: 1.1rem;
+      color: var(--muted);
+      margin-bottom: 2rem;
+    }
+
+    .links {
+      display: flex;
+      gap: 1.5rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .links a {
+      color: var(--accent);
+      text-decoration: none;
+      font-size: 1rem;
+      padding: 0.5rem 1.2rem;
+      border: 1px solid var(--accent);
+      border-radius: 6px;
+      transition: background 0.2s, color 0.2s;
+    }
+
+    .links a:hover {
+      background: var(--accent);
+      color: var(--bg);
+    }
+
+    @media (max-width: 480px) {
+      h1 { font-size: 1.8rem; }
+      .links { flex-direction: column; align-items: center; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Jeff Manning</h1>
+    <p class="bio">Building things and learning to code, one project at a time.</p>
+    <div class="links">
+      <a href="https://github.com/jmanning336">GitHub</a>
+      <a href="https://linkedin.com/">LinkedIn</a>
+    </div>
+  </div>
+</body>
+</html>
