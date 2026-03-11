@@ -1,4 +1,5 @@
-require('dotenv').config();
+// Load .env locally only — Railway injects env vars at runtime
+try { require('dotenv').config(); } catch (e) {}
 const express = require('express');
 const path = require('path');
 const oddsRoutes = require('./src/api/odds');
